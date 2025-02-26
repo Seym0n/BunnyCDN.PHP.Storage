@@ -134,6 +134,7 @@ class Client
         $response = $this->httpClient->requestAsync('PUT', $this->normalizePath($path), $options);
 
         return $response->then(function (ResponseInterface $response) {
+            var_dump($response);
             if (401 === $response->getStatusCode()) {
                 throw new AuthenticationException($this->storageZoneName, $this->apiAccessKey);
             }
